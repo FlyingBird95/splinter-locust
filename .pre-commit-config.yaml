@@ -1,0 +1,33 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+# Run manually or on file save: pre-commit run --files $FilePath$
+# Skip running pre-commit hooks: git commit --no-verify
+repos:
+  - repo: https://github.com/myint/autoflake
+    rev: v2.2.0
+    hooks:
+      - id: autoflake
+        name: Remove unused imports
+        args:
+          - --in-place
+          - --remove-all-unused-imports  # use `# noqa` to keep imports with side effects
+  - repo: https://github.com/pycqa/isort
+    rev: 5.12.0
+    hooks:
+      - id: isort
+        name: Sort imports  # use `# isort:skip` to keep manual order
+        args:
+          - --py=39
+          - --line-length=120
+          - --skip-gitignore
+          - --profile=black
+          - --quiet
+  - repo: https://github.com/psf/black  # use `# fmt: skip` to keep formatting
+    rev: 23.3.0
+    hooks:
+      - id: black
+        name: Apply code style
+        args:
+          - --target-version=py39
+          - --line-length=120
+          - --quiet

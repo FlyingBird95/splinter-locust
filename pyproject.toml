@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "splinter-locust"
+description = "Make Locust work with UI interactions using Splinter."
+version="0.0.1"
+dependencies = [
+    "locust==2.15.1",
+    "locust-plugins==4.1.0",
+    "selenium==4.14.0",
+    "splinter==0.19.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pre-commit==2.17.0",
+]
